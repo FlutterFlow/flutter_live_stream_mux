@@ -1,6 +1,7 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="io.flutterflow.flutter_mux_live">
    <uses-permission android:name="android.permission.INTERNET"/>
+   <uses-permission android:name="android.permission.CAMERA"/>
    <application
         android:label="flutter_mux_live"
         android:name="${applicationName}"
