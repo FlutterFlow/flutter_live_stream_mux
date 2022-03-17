@@ -1,7 +1,4 @@
-import 'dart:developer';
-
 import 'package:flutter/material.dart';
-import 'package:flutter_mux_live/screens/authentication/login_page.dart';
 import 'package:flutter_mux_live/utils/authentication_client.dart';
 import 'package:flutter_mux_live/utils/validators.dart';
 

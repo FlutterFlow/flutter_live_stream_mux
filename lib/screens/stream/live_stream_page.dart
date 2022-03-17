@@ -2,14 +2,11 @@ import 'dart:async';
 import 'dart:developer';
 
 import 'package:flutter/material.dart';
-import 'package:flutter/services.dart';
 import 'package:flutter_mux_live/models/mux_live_data.dart';
 import 'package:flutter_mux_live/res/strings.dart';
-import 'package:flutter_mux_live/secrets.dart';
 import 'package:flutter_mux_live/utils/mux_client.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:permission_handler/permission_handler.dart';
-import 'package:video_player/video_player.dart';
 import 'package:video_stream/camera.dart';
 import 'package:wakelock/wakelock.dart';
 
@@ -94,7 +91,7 @@ class _LiveStreamPageState extends State<LiveStreamPage> {
 
   _startVideoStreaming() async {
     await _createSession();
-    
+
     String url = streamBaseURL + _sessionData!.streamKey;
 
     try {
