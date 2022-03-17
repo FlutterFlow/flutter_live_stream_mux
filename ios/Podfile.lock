@@ -64,6 +64,8 @@ PODS:
     - nanopb/encode (= 2.30908.0)
   - nanopb/decode (2.30908.0)
   - nanopb/encode (2.30908.0)
+  - permission_handler_apple (9.0.2):
+    - Flutter
   - PromisesObjC (2.0.0)
   - video_player_avfoundation (0.0.1):
     - Flutter
@@ -78,6 +80,7 @@ DEPENDENCIES:
   - firebase_auth (from `.symlinks/plugins/firebase_auth/ios`)
   - firebase_core (from `.symlinks/plugins/firebase_core/ios`)
   - Flutter (from `Flutter`)
+  - permission_handler_apple (from `.symlinks/plugins/permission_handler_apple/ios`)
   - video_player_avfoundation (from `.symlinks/plugins/video_player_avfoundation/ios`)
   - video_stream (from `.symlinks/plugins/video_stream/ios`)
   - wakelock (from `.symlinks/plugins/wakelock/ios`)
@@ -106,6 +109,8 @@ EXTERNAL SOURCES:
     :path: ".symlinks/plugins/firebase_core/ios"
   Flutter:
     :path: Flutter
+  permission_handler_apple:
+    :path: ".symlinks/plugins/permission_handler_apple/ios"
   video_player_avfoundation:
     :path: ".symlinks/plugins/video_player_avfoundation/ios"
   video_stream:
@@ -129,11 +134,12 @@ SPEC CHECKSUMS:
   HaishinKit: d1786896ace24065d466bde02356c5352ac001b0
   Logboard: e74ec2d9941abd22f4db3a3ddcd0735011df92c7
   nanopb: a0ba3315591a9ae0a16a309ee504766e90db0c96
+  permission_handler_apple: d21b38e1a4b2e041c63af9568f9165e114e507a6
   PromisesObjC: 68159ce6952d93e17b2dfe273b8c40907db5ba58
   video_player_avfoundation: e489aac24ef5cf7af82702979ed16f2a5ef84cff
   video_stream: 672f6bd5ed287e658c6014f7c3b8368b845cceb7
   wakelock: d0fc7c864128eac40eba1617cb5264d9c940b46f
 
-PODFILE CHECKSUM: fe0e1ee7f3d1f7d00b11b474b62dd62134535aea
+PODFILE CHECKSUM: 639174f1fc1de8ad95aae1883029244efb1fdb23
 
 COCOAPODS: 1.11.2

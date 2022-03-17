@@ -107,30 +107,30 @@ class _VideoTileState extends State<VideoTile> {
                         crossAxisAlignment: CrossAxisAlignment.start,
                         children: [
                           widget.isReady && widget.thumbnailUrl != null
-                              ? Image.network(
-                                  widget.thumbnailUrl!,
-                                  fit: BoxFit.cover,
-                                )
-                              : Flexible(
-                                  child: AspectRatio(
-                                    aspectRatio: 16 / 9,
-                                    child: Container(
-                                      width: 200,
-                                      // height: 110,
-                                      color: Colors.black26,
-                                      child: const Center(
-                                        child: Text(
-                                          'MUX',
-                                          style: TextStyle(
-                                            color: Colors.white,
-                                            fontWeight: FontWeight.bold,
-                                            fontSize: 26,
-                                          ),
-                                        ),
-                                      ),
+                              ? SizedBox(
+                                width: 150,
+                                height: 100,
+                                child: Image.network(
+                                    widget.thumbnailUrl!,
+                                    fit: BoxFit.cover,
+                                    alignment: Alignment.bottomCenter,
+                                  ),
+                              )
+                              : Container(
+                                width: 150,
+                                height: 100,
+                                color: Colors.black26,
+                                child: const Center(
+                                  child: Text(
+                                    'MUX',
+                                    style: TextStyle(
+                                      color: Colors.white,
+                                      fontWeight: FontWeight.bold,
+                                      fontSize: 26,
                                     ),
                                   ),
                                 ),
+                              ),
                           Flexible(
                             child: Padding(
                               padding: const EdgeInsets.only(
@@ -166,7 +166,7 @@ class _VideoTileState extends State<VideoTile> {
                                   const SizedBox(height: 4.0),
                                   RichText(
                                     maxLines: 2,
-                                    overflow: TextOverflow.fade,
+                                    overflow: TextOverflow.clip,
                                     text: TextSpan(
                                       text: 'Created on: ',
                                       style: const TextStyle(
