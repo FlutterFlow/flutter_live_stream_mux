@@ -2,6 +2,10 @@
 
 Sample Flutter app for live streaming using MUX.
 
+* Create and start live stream
+* Get the list of streams
+* Delete a live stream (long tap on a stream tile)
+
 ## Screenshots
 
 ### Dashboard Page
