@@ -47,3 +47,4 @@ app.*.map.json
 
 # MUX secret file
 functions/.env
+.vscode/settings.json
