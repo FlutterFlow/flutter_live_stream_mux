@@ -7,16 +7,16 @@ Sample Flutter app for live streaming using MUX.
 ### Dashboard Page
 
 <p align="left">
-  <img src="screenshots/stream_active.png" width="350" title="streams active">
-  <img src="screenshots/idle_streams_id.png" width="350" alt="idle streams">
+  <img src="screenshots/stream_active.png" width="280" title="streams active">
+  <img src="screenshots/idle_streams_id.png" width="280" alt="idle streams">
 </p>
 
 ### Live Stream Page
 
 <p align="left">
-  <img src="screenshots/stream_page.png" width="300" title="stream initializing">
-  <img src="screenshots/stream_initializing.png" width="300" title="stream initializing">
-  <img src="screenshots/streaming.png" width="300" alt="streaming">
+  <img src="screenshots/stream_page.png" width="280" title="stream initializing">
+  <img src="screenshots/stream_initializing.png" width="280" title="stream initializing">
+  <img src="screenshots/streaming.png" width="280" alt="streaming">
 </p>
 
 ## Usage
