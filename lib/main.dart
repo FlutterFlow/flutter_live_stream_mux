@@ -1,11 +1,10 @@
-import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter_mux_live/firebase_options.dart';
 import 'package:flutter_mux_live/res/app_theme.dart';
-import 'package:flutter_mux_live/screens/authentication/login_page.dart';
-import 'package:flutter_mux_live/screens/stream/dashboard_page.dart';
 import 'package:video_stream/camera.dart';
+
+import 'screens/dashboard_page.dart';
 
 List<CameraDescription> cameras = [];
 void main() async {
@@ -33,9 +32,7 @@ class MyApp extends StatelessWidget {
       title: 'Live Stream',
       debugShowCheckedModeBanner: false,
       theme: AppTheme.primary,
-      home: FirebaseAuth.instance.currentUser == null
-          ? const LoginPage()
-          : const DashboardPage(),
+      home: const DashboardPage(),
     );
   }
 }
