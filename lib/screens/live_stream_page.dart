@@ -29,6 +29,7 @@ class _LiveStreamPageState extends State<LiveStreamPage> {
   bool _isCameraInitialized = false;
   bool _isInitializing = false;
   bool _isStreaming = false;
+  bool _isFrontCamSelected = true;
 
   Timer? _timer;
   String? _durationString;
@@ -70,8 +71,8 @@ class _LiveStreamPageState extends State<LiveStreamPage> {
         _isCameraPermissionGranted = true;
       });
       // Set and initialize the new camera
-
-      _onNewCameraSelected(cameras[0]);
+      // with front camera
+      _onNewCameraSelected(cameras[1]);
     } else {
       log('Camera Permission: DENIED');
     }
@@ -142,6 +143,10 @@ class _LiveStreamPageState extends State<LiveStreamPage> {
   }
 
   void _onNewCameraSelected(CameraDescription cameraDescription) async {
+    setState(() {
+      _isCameraInitialized = false;
+    });
+
     final previousCameraController = _controller;
 
     final CameraController cameraController = CameraController(
@@ -162,8 +167,6 @@ class _LiveStreamPageState extends State<LiveStreamPage> {
     _controller!.addListener(() {
       _isStreaming = _controller!.value.isStreamingVideoRtmp;
       _isCameraInitialized = _controller!.value.isInitialized;
-
-      if (mounted) {}
 
       if (_isStreaming) {
         _startTimer();
@@ -215,11 +218,54 @@ class _LiveStreamPageState extends State<LiveStreamPage> {
           children: [
             _isCameraPermissionGranted
                 ? _isCameraInitialized
-                    ? ClipRRect(
-                        borderRadius: BorderRadius.circular(30),
-                        child: AspectRatio(
-                            aspectRatio: _controller!.value.aspectRatio,
-                            child: CameraPreview(_controller!)),
+                    ? Stack(
+                        children: [
+                          ClipRRect(
+                            borderRadius: BorderRadius.circular(30),
+                            child: AspectRatio(
+                              aspectRatio: _controller!.value.aspectRatio,
+                              child: CameraPreview(_controller!),
+                            ),
+                          ),
+                          _isStreaming
+                              ? const SizedBox()
+                              : AspectRatio(
+                                  aspectRatio: _controller!.value.aspectRatio,
+                                  child: Align(
+                                    alignment: Alignment.bottomLeft,
+                                    child: Padding(
+                                      padding: const EdgeInsets.only(
+                                        left: 16.0,
+                                        bottom: 16.0,
+                                      ),
+                                      child: InkWell(
+                                        onTap: () {
+                                          _isFrontCamSelected
+                                              ? _onNewCameraSelected(cameras[0])
+                                              : _onNewCameraSelected(
+                                                  cameras[1]);
+
+                                          setState(() {
+                                            _isFrontCamSelected =
+                                                !_isFrontCamSelected;
+                                          });
+                                        },
+                                        child: const CircleAvatar(
+                                          radius: 30,
+                                          backgroundColor: Colors.black54,
+                                          child: Center(
+                                            child: Icon(
+                                              Icons.flip_camera_android,
+                                              color: Colors.white,
+                                              size: 30,
+                                            ),
+                                          ),
+                                        ),
+                                      ),
+                                    ),
+                                  ),
+                                ),
+                        ],
                       )
                     : const Center(
                         child: CircularProgressIndicator(),

@@ -1,10 +1,9 @@
 import 'package:flutter/material.dart';
 
 import 'package:flutter_mux_live/res/app_theme.dart';
-import 'package:flutter_mux_live/utils/mux_client.dart';
 
 import '../models/mux_stream.dart';
-import '../screens/stream/playback_page.dart';
+import '../screens/playback_page.dart';
 
 class VideoTile extends StatefulWidget {
   final MuxStream streamData;
@@ -108,29 +107,29 @@ class _VideoTileState extends State<VideoTile> {
                         children: [
                           widget.isReady && widget.thumbnailUrl != null
                               ? SizedBox(
-                                width: 150,
-                                height: 100,
-                                child: Image.network(
+                                  width: 150,
+                                  height: 100,
+                                  child: Image.network(
                                     widget.thumbnailUrl!,
                                     fit: BoxFit.cover,
                                     alignment: Alignment.bottomCenter,
                                   ),
-                              )
+                                )
                               : Container(
-                                width: 150,
-                                height: 100,
-                                color: Colors.black26,
-                                child: const Center(
-                                  child: Text(
-                                    'MUX',
-                                    style: TextStyle(
-                                      color: Colors.white,
-                                      fontWeight: FontWeight.bold,
-                                      fontSize: 26,
+                                  width: 150,
+                                  height: 100,
+                                  color: Colors.black26,
+                                  child: const Center(
+                                    child: Text(
+                                      'MUX',
+                                      style: TextStyle(
+                                        color: Colors.white,
+                                        fontWeight: FontWeight.bold,
+                                        fontSize: 26,
+                                      ),
                                     ),
                                   ),
                                 ),
-                              ),
                           Flexible(
                             child: Padding(
                               padding: const EdgeInsets.only(

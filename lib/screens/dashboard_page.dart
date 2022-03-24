@@ -2,11 +2,12 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_mux_live/models/mux_stream.dart';
 import 'package:flutter_mux_live/res/strings.dart';
-import 'package:flutter_mux_live/screens/stream/live_stream_page.dart';
 import 'package:flutter_mux_live/utils/mux_client.dart';
 import 'package:flutter_mux_live/widgets/video_tile.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:intl/intl.dart';
+
+import 'live_stream_page.dart';
 
 class DashboardPage extends StatefulWidget {
   const DashboardPage({Key? key}) : super(key: key);
