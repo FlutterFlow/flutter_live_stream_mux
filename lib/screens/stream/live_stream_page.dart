@@ -37,18 +37,18 @@ class _LiveStreamPageState extends State<LiveStreamPage> {
   _startTimer() {
     _stopwatch.start();
     _timer = Timer.periodic(const Duration(seconds: 1), (timer) {
-      setState(() {
-        _durationString = _getDurationString(_stopwatch.elapsed);
-      });
+      if (mounted) {
+        setState(() {
+          _durationString = _getDurationString(_stopwatch.elapsed);
+        });
+      }
     });
   }
 
   _stopTimer() {
     _stopwatch.stop();
     _stopwatch.reset();
-    setState(() {
-      _durationString = _getDurationString(_stopwatch.elapsed);
-    });
+    _durationString = _getDurationString(_stopwatch.elapsed);
 
     _timer?.cancel();
   }
@@ -70,6 +70,7 @@ class _LiveStreamPageState extends State<LiveStreamPage> {
         _isCameraPermissionGranted = true;
       });
       // Set and initialize the new camera
+
       _onNewCameraSelected(cameras[0]);
     } else {
       log('Camera Permission: DENIED');
@@ -146,7 +147,8 @@ class _LiveStreamPageState extends State<LiveStreamPage> {
     final CameraController cameraController = CameraController(
       cameraDescription,
       ResolutionPreset.high,
-      streamingPreset: ResolutionPreset.high,
+      enableAudio: true,
+      androidUseOpenGL: true,
     );
 
     await previousCameraController?.dispose();
@@ -160,6 +162,8 @@ class _LiveStreamPageState extends State<LiveStreamPage> {
     _controller!.addListener(() {
       _isStreaming = _controller!.value.isStreamingVideoRtmp;
       _isCameraInitialized = _controller!.value.isInitialized;
+
+      if (mounted) {}
 
       if (_isStreaming) {
         _startTimer();
