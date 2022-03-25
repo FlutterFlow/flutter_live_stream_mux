@@ -50,29 +50,6 @@ class MuxLiveData {
       };
 }
 
-class NewAssetSettings {
-  NewAssetSettings({
-    required this.playbackPolicies,
-  });
-
-  List<String> playbackPolicies;
-
-  factory NewAssetSettings.fromRawJson(String str) =>
-      NewAssetSettings.fromJson(json.decode(str));
-
-  String toRawJson() => json.encode(toJson());
-
-  factory NewAssetSettings.fromJson(Map<String, dynamic> json) =>
-      NewAssetSettings(
-        playbackPolicies:
-            List<String>.from(json["playback_policies"].map((x) => x)),
-      );
-
-  Map<String, dynamic> toJson() => {
-        "playback_policies": List<dynamic>.from(playbackPolicies.map((x) => x)),
-      };
-}
-
 class PlaybackId {
   PlaybackId({
     required this.policy,
