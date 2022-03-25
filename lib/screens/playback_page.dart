@@ -1,9 +1,8 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_mux_live/models/mux_stream.dart';
-import 'package:flutter_mux_live/res/app_theme.dart';
 import 'package:flutter_mux_live/res/strings.dart';
-import 'package:intl/intl.dart';
 import 'package:video_player/video_player.dart';
+
+import '../models/mux_live_data.dart';
 
 class PlaybackPage extends StatefulWidget {
   const PlaybackPage({
@@ -11,7 +10,7 @@ class PlaybackPage extends StatefulWidget {
     required this.streamData,
   }) : super(key: key);
 
-  final MuxStream streamData;
+  final MuxLiveData streamData;
 
   @override
   State<PlaybackPage> createState() => _PlaybackPageState();
@@ -19,8 +18,7 @@ class PlaybackPage extends StatefulWidget {
 
 class _PlaybackPageState extends State<PlaybackPage> {
   late final VideoPlayerController _videoController;
-  late final MuxStream _streamData;
-  late final String _dateTimeString;
+  late final MuxLiveData _streamData;
 
   @override
   void initState() {
@@ -28,11 +26,6 @@ class _PlaybackPageState extends State<PlaybackPage> {
 
     _streamData = widget.streamData;
     String playbackId = _streamData.playbackIds[0].id;
-
-    DateTime dateTime = DateTime.fromMillisecondsSinceEpoch(
-        int.parse(_streamData.createdAt) * 1000);
-    DateFormat formatter = DateFormat.yMd().add_jm();
-    _dateTimeString = formatter.format(dateTime);
 
     _videoController = VideoPlayerController.network(
         '$muxStreamBaseUrl/$playbackId.$videoExtension')
@@ -56,12 +49,12 @@ class _PlaybackPageState extends State<PlaybackPage> {
       body: SafeArea(
         child: _videoController.value.isInitialized
             ? ClipRRect(
-              borderRadius: BorderRadius.circular(30),
-              child: AspectRatio(
+                borderRadius: BorderRadius.circular(30),
+                child: AspectRatio(
                   aspectRatio: _videoController.value.aspectRatio,
                   child: VideoPlayer(_videoController),
                 ),
-            )
+              )
             : AspectRatio(
                 aspectRatio: 9 / 16,
                 child: Container(
@@ -70,7 +63,7 @@ class _PlaybackPageState extends State<PlaybackPage> {
                   child: const Center(
                     child: CircularProgressIndicator(
                       valueColor: AlwaysStoppedAnimation<Color>(
-                        CustomColors.muxPink,
+                        Colors.pink,
                       ),
                       strokeWidth: 2,
                     ),

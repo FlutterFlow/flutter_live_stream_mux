@@ -1,12 +1,10 @@
 import 'package:flutter/material.dart';
 
-import 'package:flutter_mux_live/res/app_theme.dart';
-
-import '../models/mux_stream.dart';
+import '../models/mux_live_data.dart';
 import '../screens/playback_page.dart';
 
 class VideoTile extends StatefulWidget {
-  final MuxStream streamData;
+  final MuxLiveData streamData;
   final String? thumbnailUrl;
   final String dateTimeString;
   final bool isReady;
@@ -147,7 +145,7 @@ class _VideoTileState extends State<VideoTile> {
                                     text: TextSpan(
                                       text: 'Status: ',
                                       style: const TextStyle(
-                                        color: CustomColors.muxGray,
+                                        color: Colors.black,
                                         fontSize: 14.0,
                                       ),
                                       children: [
@@ -155,8 +153,8 @@ class _VideoTileState extends State<VideoTile> {
                                           text: widget.streamData.status,
                                           style: TextStyle(
                                             // fontSize: 12.0,
-                                            color: CustomColors.muxGray
-                                                .withOpacity(0.6),
+                                            color:
+                                                Colors.black.withOpacity(0.4),
                                           ),
                                         )
                                       ],
@@ -169,7 +167,7 @@ class _VideoTileState extends State<VideoTile> {
                                     text: TextSpan(
                                       text: 'Created on: ',
                                       style: const TextStyle(
-                                        color: CustomColors.muxGray,
+                                        color: Colors.black,
                                         fontSize: 14.0,
                                       ),
                                       children: [
@@ -177,8 +175,8 @@ class _VideoTileState extends State<VideoTile> {
                                           text: '\n${widget.dateTimeString}',
                                           style: TextStyle(
                                             // fontSize: 12.0,
-                                            color: CustomColors.muxGray
-                                                .withOpacity(0.6),
+                                            color:
+                                                Colors.black.withOpacity(0.4),
                                           ),
                                         )
                                       ],

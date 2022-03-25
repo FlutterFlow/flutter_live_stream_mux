@@ -1,7 +1,7 @@
 import 'package:cloud_functions/cloud_functions.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_mux_live/models/mux_live_data.dart';
-import 'package:flutter_mux_live/models/mux_stream.dart';
+// import 'package:flutter_mux_live/models/mux_stream.dart';
 
 class MuxClient {
   FirebaseFunctions functions = FirebaseFunctions.instance;
@@ -13,14 +13,14 @@ class MuxClient {
     return muxLiveData;
   }
 
-  Future<List<MuxStream>> getLiveStreams() async {
+  Future<List<MuxLiveData>> getLiveStreams() async {
     final callable = functions.httpsCallable('retrieveLiveStreams');
     final response = await callable();
 
     Iterable l = response.data;
-    List<MuxStream> streamList = List<MuxStream>.from(
+    List<MuxLiveData> streamList = List<MuxLiveData>.from(
       l.map(
-        (model) => MuxStream.fromJson(
+        (model) => MuxLiveData.fromJson(
           Map<String, dynamic>.from(model),
         ),
       ),

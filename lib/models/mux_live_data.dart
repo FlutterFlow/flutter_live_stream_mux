@@ -6,22 +6,20 @@ class MuxLiveData {
     required this.status,
     required this.reconnectWindow,
     required this.playbackIds,
-    required this.newAssetSettings,
     required this.id,
     required this.createdAt,
     required this.latencyMode,
     required this.maxContinuousDuration,
   });
 
-  String streamKey;
+  String? streamKey;
   String status;
-  int reconnectWindow;
+  int? reconnectWindow;
   List<PlaybackId> playbackIds;
-  NewAssetSettings newAssetSettings;
   String id;
   String createdAt;
-  String latencyMode;
-  int maxContinuousDuration;
+  String? latencyMode;
+  int? maxContinuousDuration;
 
   factory MuxLiveData.fromRawJson(String str) =>
       MuxLiveData.fromJson(json.decode(str));
@@ -34,8 +32,6 @@ class MuxLiveData {
         reconnectWindow: json["reconnect_window"],
         playbackIds: List<PlaybackId>.from(json["playback_ids"]
             .map((x) => PlaybackId.fromJson(Map<String, dynamic>.from(x)))),
-        newAssetSettings: NewAssetSettings.fromJson(
-            Map<String, dynamic>.from(json["new_asset_settings"])),
         id: json["id"],
         createdAt: json["created_at"],
         latencyMode: json["latency_mode"],
@@ -47,7 +43,6 @@ class MuxLiveData {
         "status": status,
         "reconnect_window": reconnectWindow,
         "playback_ids": List<dynamic>.from(playbackIds.map((x) => x.toJson())),
-        "new_asset_settings": newAssetSettings.toJson(),
         "id": id,
         "created_at": createdAt,
         "latency_mode": latencyMode,

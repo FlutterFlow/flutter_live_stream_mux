@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter_mux_live/firebase_options.dart';
-import 'package:flutter_mux_live/res/app_theme.dart';
 import 'package:video_stream/camera.dart';
 
 import 'screens/dashboard_page.dart';
@@ -31,7 +30,10 @@ class MyApp extends StatelessWidget {
     return MaterialApp(
       title: 'Live Stream',
       debugShowCheckedModeBanner: false,
-      theme: AppTheme.primary,
+      theme: ThemeData(
+        primarySwatch: Colors.pink,
+        fontFamily: 'GoogleSans',
+      ),
       home: const DashboardPage(),
     );
   }

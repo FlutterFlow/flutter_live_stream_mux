@@ -1,12 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
-import 'package:flutter_mux_live/models/mux_stream.dart';
 import 'package:flutter_mux_live/res/strings.dart';
 import 'package:flutter_mux_live/utils/mux_client.dart';
 import 'package:flutter_mux_live/widgets/video_tile.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:intl/intl.dart';
 
+import '../models/mux_live_data.dart';
 import 'live_stream_page.dart';
 
 class DashboardPage extends StatefulWidget {
@@ -18,7 +18,7 @@ class DashboardPage extends StatefulWidget {
 
 class _DashboardPageState extends State<DashboardPage> {
   late final MuxClient _muxClient;
-  List<MuxStream>? _streams;
+  List<MuxLiveData>? _streams;
 
   bool _activeStreamToggle = true;
   bool _idToggle = false;

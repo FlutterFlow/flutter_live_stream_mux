@@ -94,7 +94,7 @@ class _LiveStreamPageState extends State<LiveStreamPage> {
   _startVideoStreaming() async {
     await _createSession();
 
-    String url = streamBaseURL + _sessionData!.streamKey;
+    String url = streamBaseURL + _sessionData!.streamKey!;
 
     try {
       await _controller!.startVideoStreaming(url, androidUseOpenGL: false);
