@@ -184,12 +184,6 @@ class _LiveStreamPageState extends State<LiveStreamPage> {
     } on CameraException catch (e) {
       log('Error initializing camera: $e');
     }
-
-    // if (mounted) {
-    //   setState(() {
-    //     _isCameraInitialized = _controller!.value.isInitialized;
-    //   });
-    // }
   }
 
   @override
@@ -444,18 +438,6 @@ class _LiveStreamPageState extends State<LiveStreamPage> {
                             ),
                           ),
                         ),
-                        // IconButton(
-                        //   onPressed: () async {
-                        //     final newData = await _muxClient.getLiveStream(
-                        //       liveStreamId: _sessionData!.id,
-                        //     );
-
-                        //     setState(() {
-                        //       _sessionData = newData;
-                        //     });
-                        //   },
-                        //   icon: Icon(Icons.refresh),
-                        // ),
                         Text(
                           _durationString ?? '',
                           style: const TextStyle(

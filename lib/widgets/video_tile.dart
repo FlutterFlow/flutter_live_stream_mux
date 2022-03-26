@@ -8,7 +8,6 @@ class VideoTile extends StatefulWidget {
   final String? thumbnailUrl;
   final String dateTimeString;
   final bool isReady;
-  final bool showId;
   final Function(String id) onTap;
 
   const VideoTile({
@@ -17,7 +16,6 @@ class VideoTile extends StatefulWidget {
     required this.thumbnailUrl,
     required this.dateTimeString,
     required this.isReady,
-    required this.showId,
     required this.onTap,
   }) : super(key: key);
 
@@ -30,10 +28,6 @@ class _VideoTileState extends State<VideoTile> {
 
   @override
   Widget build(BuildContext context) {
-    const snackBar = SnackBar(
-      content: Text('The video is not active'),
-    );
-
     return Stack(
       children: [
         Padding(
@@ -67,7 +61,9 @@ class _VideoTileState extends State<VideoTile> {
                           ),
                         )
                       : ScaffoldMessenger.of(context).showSnackBar(
-                          snackBar,
+                          const SnackBar(
+                            content: Text('The video is not active'),
+                          ),
                         );
                 },
                 onLongPress: () {
@@ -80,26 +76,24 @@ class _VideoTileState extends State<VideoTile> {
                   child: Column(
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
-                      widget.showId
-                          ? Container(
-                              width: double.maxFinite,
-                              color: Colors.pink.shade300,
-                              child: Padding(
-                                padding: const EdgeInsets.only(
-                                  left: 8.0,
-                                  top: 8.0,
-                                  bottom: 8.0,
-                                ),
-                                child: Text(
-                                  widget.streamData.id,
-                                  style: const TextStyle(
-                                    fontSize: 12.0,
-                                    color: Colors.white,
-                                  ),
-                                ),
-                              ),
-                            )
-                          : const SizedBox(),
+                      Container(
+                        width: double.maxFinite,
+                        color: Colors.pink.shade300,
+                        child: Padding(
+                          padding: const EdgeInsets.only(
+                            left: 8.0,
+                            top: 8.0,
+                            bottom: 8.0,
+                          ),
+                          child: Text(
+                            widget.streamData.id,
+                            style: const TextStyle(
+                              fontSize: 12.0,
+                              color: Colors.white,
+                            ),
+                          ),
+                        ),
+                      ),
                       Row(
                         crossAxisAlignment: CrossAxisAlignment.start,
                         children: [

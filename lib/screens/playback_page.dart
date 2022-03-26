@@ -55,19 +55,12 @@ class _PlaybackPageState extends State<PlaybackPage> {
                   child: VideoPlayer(_videoController),
                 ),
               )
-            : AspectRatio(
-                aspectRatio: 9 / 16,
-                child: Container(
-                  color: Colors.black,
-                  width: double.maxFinite,
-                  child: const Center(
-                    child: CircularProgressIndicator(
-                      valueColor: AlwaysStoppedAnimation<Color>(
-                        Colors.pink,
-                      ),
-                      strokeWidth: 2,
-                    ),
+            : const Center(
+                child: CircularProgressIndicator(
+                  valueColor: AlwaysStoppedAnimation<Color>(
+                    Colors.pink,
                   ),
+                  strokeWidth: 2,
                 ),
               ),
       ),

@@ -1,7 +1,5 @@
 import 'package:cloud_functions/cloud_functions.dart';
-import 'package:flutter/material.dart';
 import 'package:flutter_mux_live/models/mux_live_data.dart';
-// import 'package:flutter_mux_live/models/mux_stream.dart';
 
 class MuxClient {
   FirebaseFunctions functions = FirebaseFunctions.instance;
@@ -40,9 +38,8 @@ class MuxClient {
 
   Future<void> deleteLiveStream({required String liveStreamId}) async {
     final callable = functions.httpsCallable('deleteLiveStream');
-    final response = await callable.call({
+    await callable.call({
       'liveStreamId': liveStreamId,
     });
-    debugPrint('deleted response: ${response.toString()}');
   }
 }
